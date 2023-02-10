@@ -1,6 +1,7 @@
 let step = 1,
  step_comment = 6;
 const start_step = 1,
+server = window.location.origin,
  final_step = 4,
  reservation = { id: "", name: "", date: "", time: "", services: [], products: [] };
 function startApp() {
@@ -141,7 +142,6 @@ function nextPage() {
  });
 }
 async function getAPIServices() {
-    const server = window.location.origin;
  try {
   const e = `${server}/api/services`,
    t = await fetch(e);
