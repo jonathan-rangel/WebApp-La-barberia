@@ -38,7 +38,7 @@ function pagerButtons() {
 async function getAPIComments() {
  if (6 === step_comment)
   try {
-   const e = '${server}/api/comments/all',
+   const e = `${server}/api/comments/all`,
     t = await fetch(e);
    showAllComments(await t.json());
   } catch (e) {
@@ -46,7 +46,7 @@ async function getAPIComments() {
   }
  else
   try {
-   const e = '${server}/api/comments/user',
+   const e = `${server}/api/comments/user`,
     t = await fetch(e);
    showUserComments(await t.json());
   } catch (e) {
@@ -142,6 +142,7 @@ function nextPage() {
  });
 }
 async function getAPIServices() {
+    console.log(server);
  try {
   const e = `${server}/api/services`,
    t = await fetch(e);
@@ -151,6 +152,7 @@ async function getAPIServices() {
  }
 }
 async function getAPIProducts() {
+    console.log(server);
  try {
   const e = `${server}/api/products`,
    t = await fetch(e);
@@ -160,7 +162,6 @@ async function getAPIProducts() {
  }
 }
 function showProducts(e) {
- document.querySelector("#products").textContent ||
   e.forEach((e) => {
    const { id: t, name: n, price: c, description: o, image: s } = e,
     a = document.createElement("P");

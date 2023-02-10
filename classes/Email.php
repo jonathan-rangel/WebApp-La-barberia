@@ -36,7 +36,7 @@ class Email {
         $content = "<html>";
         $content .= "<p><strong>Hola " . $this->name . "</strong> Has creado tu cuenta en La barbería.
         Debes confirmar tu cuenta presionando el siguiente enlace.</p>";
-        $content .= "<p>Presiona aquí: <a href='https://goldfish-app-xukro.ondigitalocean.app/confirm_account?token=" . $this->token . "'>Confirmar cuenta</a></p>";
+        $content .= "<p>Presiona aquí: <a href='https://" . $_SERVER["HTTP_HOST"] . "/confirm_account?token=" . $this->token . "'>Confirmar cuenta</a></p>";
         $content .= "<p>Si no solicitaste esta confirmación puedes ignorar este correo.</p>";
         $content .= "<p>La barbería</p>";
         $content .= "</html>";
