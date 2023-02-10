@@ -144,8 +144,10 @@ function nextPage() {
 function showProducts() {
     const products = document.querySelectorAll(".product");
     products.forEach(product => {
+        const productName = product.querySelector('.product-name').textContent;
+        const productPrice = product.querySelector('.product-price').textContent;
         product.onclick = function() {
-            selectProduct(product.dataset.productId, product.dataset.productName, product.dataset.productPrice);
+            selectProduct(product.dataset.productId, productName, productPrice);
         }
     });
 }
@@ -153,8 +155,10 @@ function showProducts() {
 function showServices() {
     const services = document.querySelectorAll(".service");
     services.forEach(service => {
+        const serviceName = service.querySelector('.service-name').textContent;
+        const servicePrice = service.querySelector('.service-price').textContent;
         service.onclick = function() {
-            selectService(service.dataset.serviceId, service.dataset.serviceName, service.dataset.servicePrice);
+            selectService(service.dataset.serviceId, serviceName, servicePrice);
         }
     });
 }
@@ -274,7 +278,7 @@ async function doReservation() {
         r = new FormData();
     r.append("userId", e), r.append("date", t), r.append("time", n), r.append("services", s), r.append("products", a);
     try {
-        const e = "http://localhost:3000/api/reservations",
+        const e = "https://plankton-app-2ie44.ondigitalocean.app/api/reservations",
             t = await fetch(e, { method: "POST", body: r });
         (await t.json()).result &&
             Swal.fire({ icon: "success", title: "Reservación creada", text: "Has reservado una cita en La barbería ©" }).then(() => {
