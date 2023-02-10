@@ -46,12 +46,12 @@
         <h2>Servicios</h2>
         <p class="text-align">Elige tus servicios</p>
         <div id="services" class="list-services">
-        <!-- <?php foreach($services as $service) { ?>
-            <div class="service" data-service-id="<?php echo $service->id ?>" data-service-name="<?php echo $service->name ?>">
+        <?php foreach($services as $service) { ?>
+            <div class="service" data-service-id="<?php echo $service->id ?>" data-service-name="<?php echo $service->name ?>" data-service-price="<?php echo $service->price ?>">
                 <p class="service-name"><?php echo $service->name; ?></p>
                 <p class="service-price">$<?php echo $service->price; ?></p>
             </div>
-        <?php }; ?>  -->
+        <?php }; ?> 
         </div>
     </div>
     <div class="section" id="step-2">
@@ -89,7 +89,15 @@
     <div class="section" id="step-3">
         <h2>Productos extra</h2>
         <p class="text-align">Elige algún producto para comprar</p>
-        <div id="products" class="list-products"></div>
+        <div id="products" class="list-products">
+        <?php foreach($products as $product) { ?>
+            <div class="product" data-product-id="<?php echo $product->id ?>" data-product-name="<?php echo $product->name ?>" data-product-price="<?php echo $product->price ?>">
+                <p class="product-name"><?php echo $product->name; ?></p>
+                <div style="background-image: url('<?php echo $product->image; ?>'); height: 37rem; width: 37rem; background-size: cover; background-position: center center; background-repeat: no-repeat" ></div>
+                <p class="product-price">$<?php echo $product->price; ?></p>
+            </div>
+        <?php }; ?> 
+        </div>
     </div>
     <div class="section content-sum" id="step-4">
         <h2>Resumen de la reservación</h2>

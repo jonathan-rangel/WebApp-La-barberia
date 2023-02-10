@@ -142,7 +142,7 @@ function nextPage() {
 }
 async function getAPIServices() {
     try {
-        const e = "https://goldfish-app-xukro.ondigitalocean.app/api/services",
+        const e = "http://localhost:3000/api/services",
             t = await fetch(e);
         showServices(await t.json());
     } catch (e) {
@@ -151,7 +151,7 @@ async function getAPIServices() {
 }
 async function getAPIProducts() {
     try {
-        const e = "https://goldfish-app-xukro.ondigitalocean.app/api/products",
+        const e = "http://localhost:3000/api/products",
             t = await fetch(e);
         showProducts(await t.json());
     } catch (e) {
@@ -159,57 +159,43 @@ async function getAPIProducts() {
     }
 }
 function showProducts(e) {
-    document.querySelector("#products").textContent ||
-        e.forEach((e) => {
-            const { id: t, name: n, price: c, description: o, image: s } = e,
-                a = document.createElement("P");
-            a.classList.add("product-name"), (a.textContent = n);
-            const r = document.createElement("IMG");
-            r.src = s;
-            const d = document.createElement("P");
-            d.classList.add("product-price"), (d.textContent = "$" + c);
-            const i = document.createElement("DIV");
-            i.classList.add("product"),
-                (i.dataset.productId = t),
-                (i.onclick = function () {
-                    selectProduct(e);
-                }),
-                i.appendChild(a),
-                i.appendChild(r),
-                i.appendChild(d),
-                document.querySelector("#products").appendChild(i);
-        });
-}
-function showServices(e) {
-    e.forEach((e) => {
-        const { id: t, name: n, price: c, description: o } = e,
-            s = document.createElement("P");
-        s.classList.add("service-name"), (s.textContent = n);
-        const a = document.createElement("P");
-        a.classList.add("service-price"), (a.textContent = "$" + c);
-        const r = document.createElement("DIV");
-        r.classList.add("service"),
-            (r.dataset.serviceId = t),
-            (r.onclick = function () {
-                selectService(e);
-            }),
-            r.appendChild(s),
-            r.appendChild(a),
-            document.querySelector("#services").appendChild(r);
+    const products = document.querySelectorAll(".product");
+    products.forEach(product => {
+        product.onclick = function() {
+            selectProduct(product.dataset.productId, product.dataset.productName, product.dataset.productPrice);
+        }
     });
 }
-function selectProduct(e) {
-    const { id: t } = e,
-        { products: n } = reservation,
-        c = document.querySelector(`[data-product-id="${t}"]`);
-    n.some((e) => e.id === t) ? ((reservation.products = n.filter((e) => e.id !== t)), c.classList.remove("selected")) : ((reservation.products = [...n, e]), c.classList.add("selected"));
+
+function showServices(e) {
+    const services = document.querySelectorAll(".service");
+    services.forEach(service => {
+        service.onclick = function() {
+            selectService(service.dataset.serviceId, service.dataset.serviceName, service.dataset.servicePrice);
+        }
+    });
 }
-function selectService(e) {
-    const { id: t } = e,
-        { services: n } = reservation,
-        c = document.querySelector(`[data-service-id="${t}"]`);
-    n.some((e) => e.id === t) ? ((reservation.services = n.filter((e) => e.id !== t)), c.classList.remove("selected")) : ((reservation.services = [...n, e]), c.classList.add("selected"));
+function selectProduct(productId, productName, productPrice) {
+    const product = {
+        id: productId,
+        name: productName,
+        price: productPrice 
+    };
+    const {id: t} = product, { products: n } = reservation;
+    c = document.querySelector(`[data-product-id="${t}"]`);
+    n.some((product) => product.id === t) ? ((reservation.products = n.filter((product) => product.id !== t)), c.classList.remove("selected")) : ((reservation.products = [...n, product]), c.classList.add("selected"));
 }
+function selectService(serviceId, serviceName, servicePrice) {
+    const service = {
+        id: serviceId,
+        name: serviceName,
+        price: servicePrice 
+    };
+    const {id: t} = service, { services: n } = reservation;
+    c = document.querySelector(`[data-service-id="${t}"]`);
+    n.some((service) => service.id === t) ? ((reservation.services = n.filter((service) => service.id !== t)), c.classList.remove("selected")) : ((reservation.services = [...n, service]), c.classList.add("selected"));
+}
+
 function saveClientId() {
     reservation.id = document.querySelector("#id").value;
 }
