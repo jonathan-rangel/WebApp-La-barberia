@@ -11,9 +11,12 @@ class ReservationController {
         
         isAuth();
 
+        $services = Service::all();
+
         $router->render('reservation/index', [
             'name_last' => $_SESSION['name_last'],
-            'id' => $_SESSION['id']
+            'id' => $_SESSION['id'],
+            'services' => $services
         ]);
     }
 }

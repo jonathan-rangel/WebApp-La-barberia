@@ -45,7 +45,14 @@
     <div class="section" id="step-1">
         <h2>Servicios</h2>
         <p class="text-align">Elige tus servicios</p>
-        <div id="services" class="list-services"></div>
+        <div id="services" class="list-services">
+        <?php foreach($services as $service) { ?>
+            <div class="service">
+                <p class="service-name"><?php echo $service->name; ?></p>
+                <p class="service-price">$<?php echo $service->price; ?></p>
+            </div>
+        <?php }; ?> 
+        </div>
     </div>
     <div class="section" id="step-2">
         <h2>Reservación</h2>
