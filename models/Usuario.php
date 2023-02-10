@@ -96,11 +96,12 @@ class Usuario extends ActiveRecord {
         if(!$result) {
             self::$alertas['error'][] = 'El correo electrónico y/o la contraseña son incorrectos';
         } else {
-            // if(!$this->confirmed) {
-            //     self::$alertas['error'][] = 'Tu cuenta aún no ha sido confirmada';
-            // } else {
+            if(!$this->confirmed) {
+                self::$alertas['error'][] = 'Tu cuenta aún no ha sido confirmada';
+            } else {
                 return true;
             }
+        }
     }
 
     public function validatePassword() {
