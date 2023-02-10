@@ -4,7 +4,7 @@ const start_step = 1,
     final_step = 4,
     reservation = { id: "", name: "", date: "", time: "", services: [], products: [] };
 function startApp() {
-    showSection(), tabs(), pagerButtons(), prevPage(), nextPage(), getAPIServices(), saveClientId(), saveClienName(), saveDate(), saveTime(), showSummary();
+    showSection(), tabs(), pagerButtons(), prevPage(), nextPage(), /*getAPIServices(),*/ saveClientId(), saveClienName(), saveDate(), saveTime(), showSummary();
 }
 function showSection() {
     const e = document.querySelector(".show-section");
@@ -140,15 +140,15 @@ function nextPage() {
         step >= 4 || (step++, ul(step - 1), pagerButtons());
     });
 }
-// async function getAPIServices() {
-//     try {
-//         const e = "http://localhost:3000/api/services",
-//             t = await fetch(e);
-//         showServices(await t.json());
-//     } catch (e) {
-//         console.log(e);
-//     }
-// }
+async function getAPIServices() {
+    try {
+        const e = "http://localhost:3000/api/services",
+            t = await fetch(e);
+        showServices(await t.json());
+    } catch (e) {
+        console.log(e);
+    }
+}
 async function getAPIProducts() {
     try {
         const e = "http://localhost:3000/api/products",

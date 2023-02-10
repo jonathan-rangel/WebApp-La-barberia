@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Service;
 use MVC\Router;
 
 class ReservationController {
