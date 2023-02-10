@@ -19,14 +19,15 @@ class Email {
         //Crear el objeto de email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '4c6c7d8ef17f9f';
-        $mail->Password = 'd419a0194e3050';
+        $mail->Port = 465;
+        $mail->Username = 'web.app.la.barberia@gmail.com';
+        $mail->Password = 'hkdhiwjdimkqpahm';
+        $mail->SMTPSecure = 'ssl';
 
-        $mail->setFrom('Labarberia@LaBarberia.com');
-        $mail->addAddress('Labarberia@LaBarberia.com', 'LaBarbería.com');
+        $mail->setFrom('web.app.la.barberia@gmail.com');
+        $mail->addAddress($this->email);
         $mail->Subject = 'Confirma tu cuenta';
 
         //Set HTML
@@ -52,15 +53,16 @@ class Email {
         //Crear el objeto de email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'ac46b35294b8d6';
-        $mail->Password = '2861d6adff401c';
+        $mail->Port = 465;
+        $mail->Username = 'web.app.la.barberia@gmail.com';
+        $mail->Password = 'hkdhiwjdimkqpahm';
+        $mail->SMTPSecure = 'ssl';
 
-        $mail->setFrom('Labarberia@LaBarberia.com');
-        $mail->addAddress('Labarberia@LaBarberia.com', 'LaBarbería.com');
-        $mail->Subject = 'Restablecer contraseña';
+        $mail->setFrom('web.app.la.barberia@gmail.com');
+        $mail->addAddress($this->email);
+        $mail->Subject = 'Reestablecer tu contraseña';
 
         //Set HTML
         $mail->isHTML(TRUE);
