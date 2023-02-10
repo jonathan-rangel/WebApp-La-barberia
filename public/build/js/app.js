@@ -37,7 +37,7 @@ function pagerButtons() {
 async function getAPIComments() {
  if (6 === step_comment)
   try {
-   const e = "http://localhost:3000/api/comments/all",
+   const e = '${server}/api/comments/all',
     t = await fetch(e);
    showAllComments(await t.json());
   } catch (e) {
@@ -45,7 +45,7 @@ async function getAPIComments() {
   }
  else
   try {
-   const e = "http://localhost:3000/api/comments/user",
+   const e = '${server}/api/comments/user',
     t = await fetch(e);
    showUserComments(await t.json());
   } catch (e) {
@@ -143,7 +143,7 @@ function nextPage() {
 async function getAPIServices() {
     const server = window.location.origin;
  try {
-  const e = `http://${server}/api/services`,
+  const e = `${server}/api/services`,
    t = await fetch(e);
   showServices(await t.json());
  } catch (e) {
@@ -152,7 +152,7 @@ async function getAPIServices() {
 }
 async function getAPIProducts() {
  try {
-  const e = "http://localhost:3000/api/products",
+  const e = `${server}/api/products`,
    t = await fetch(e);
   showProducts(await t.json());
  } catch (e) {
@@ -306,7 +306,7 @@ async function doReservation() {
   r = new FormData();
  r.append("userId", e), r.append("date", t), r.append("time", n), r.append("services", s), r.append("products", a);
  try {
-  const e = "http://localhost:3000/api/reservations",
+  const e = `${server}/api/reservations`,
    t = await fetch(e, { method: "POST", body: r });
   (await t.json()).result &&
    Swal.fire({ icon: "success", title: "Reservación creada", text: "Has reservado una cita en La barbería ©" }).then(() => {
