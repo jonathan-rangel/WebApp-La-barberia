@@ -166,7 +166,7 @@ function selectProduct(productId, productName, productPrice) {
     const product = {
         id: productId,
         name: productName,
-        price: productPrice 
+        price: productPrice.substring(1)
     };
     const {id: t} = product, { products: n } = reservation;
     c = document.querySelector(`[data-product-id="${t}"]`);
@@ -176,7 +176,7 @@ function selectService(serviceId, serviceName, servicePrice) {
     const service = {
         id: serviceId,
         name: serviceName,
-        price: servicePrice 
+        price: servicePrice.substring(1)
     };
     const {id: t} = service, { services: n } = reservation;
     c = document.querySelector(`[data-service-id="${t}"]`);
