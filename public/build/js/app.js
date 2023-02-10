@@ -140,24 +140,7 @@ function nextPage() {
         step >= 4 || (step++, ul(step - 1), pagerButtons());
     });
 }
-async function getAPIServices() {
-    try {
-        const e = "http://localhost:3000/api/services",
-            t = await fetch(e);
-        showServices(await t.json());
-    } catch (e) {
-        console.log(e);
-    }
-}
-async function getAPIProducts() {
-    try {
-        const e = "http://localhost:3000/api/products",
-            t = await fetch(e);
-        showProducts(await t.json());
-    } catch (e) {
-        console.log(e);
-    }
-}
+
 function showProducts() {
     const products = document.querySelectorAll(".product");
     products.forEach(product => {
