@@ -278,7 +278,7 @@ async function doReservation() {
         r = new FormData();
     r.append("userId", e), r.append("date", t), r.append("time", n), r.append("services", s), r.append("products", a);
     try {
-        const e = "https://plankton-app-2ie44.ondigitalocean.app/api/reservations",
+        const e = "https://us-cdbr-east-05.cleardb.net/api/reservations",
             t = await fetch(e, { method: "POST", body: r });
         (await t.json()).result &&
             Swal.fire({ icon: "success", title: "Reservación creada", text: "Has reservado una cita en La barbería ©" }).then(() => {
