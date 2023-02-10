@@ -47,7 +47,7 @@
         <p class="text-align">Elige tus servicios</p>
         <div id="services" class="list-services">
         <?php foreach($services as $service) { ?>
-            <div class="service" data-service-id="<?php $service->id ?>" data-service-name="<?php $service->name ?>">
+            <div class="service" data-service-id="<?php echo $service->id ?>" data-service-name="<?php echo $service->name ?>">
                 <p class="service-name"><?php echo $service->name; ?></p>
                 <p class="service-price">$<?php echo $service->price; ?></p>
             </div>
