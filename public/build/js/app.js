@@ -4,7 +4,7 @@ const start_step = 1,
     final_step = 4,
     reservation = { id: "", name: "", date: "", time: "", services: [], products: [] };
 function startApp() {
-    showSection(), tabs(), pagerButtons(), prevPage(), nextPage(), getAPIServices(), saveClientId(), saveClienName(), saveDate(), saveTime(), showSummary();
+    showSection(), tabs(), pagerButtons(), prevPage(), nextPage(), showServices(), saveClientId(), saveClienName(), saveDate(), saveTime(), showSummary();
 }
 function showSection() {
     const e = document.querySelector(".show-section");
@@ -31,7 +31,7 @@ function pagerButtons() {
         t = document.querySelector("#next");
     1 === step ? (e.classList.add("hide"), t.classList.remove("hide")) : 4 === step ? (e.classList.remove("hide"), t.classList.add("hide"), showSummary()) : (e.classList.remove("hide"), t.classList.remove("hide")),
         5 === step && (e.classList.add("hide"), t.classList.add("hide"), getAPIComments(), buttonComments()),
-        3 === step && getAPIProducts(),
+        3 === step && showProducts(),
         showSection();
 }
 async function getAPIComments() {
@@ -158,7 +158,7 @@ async function getAPIProducts() {
         console.log(e);
     }
 }
-function showProducts(e) {
+function showProducts() {
     const products = document.querySelectorAll(".product");
     products.forEach(product => {
         product.onclick = function() {
@@ -167,7 +167,7 @@ function showProducts(e) {
     });
 }
 
-function showServices(e) {
+function showServices() {
     const services = document.querySelectorAll(".service");
     services.forEach(service => {
         service.onclick = function() {
