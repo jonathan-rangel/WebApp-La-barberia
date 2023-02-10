@@ -46,12 +46,12 @@
         <h2>Servicios</h2>
         <p class="text-align">Elige tus servicios</p>
         <div id="services" class="list-services">
-        <?php foreach($services as $service) { ?>
+        <!-- <?php foreach($services as $service) { ?>
             <div class="service" data-service-id="<?php echo $service->id ?>" data-service-name="<?php echo $service->name ?>">
                 <p class="service-name"><?php echo $service->name; ?></p>
                 <p class="service-price">$<?php echo $service->price; ?></p>
             </div>
-        <?php }; ?> 
+        <?php }; ?>  -->
         </div>
     </div>
     <div class="section" id="step-2">
