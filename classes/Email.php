@@ -26,7 +26,7 @@ class Email {
         $mail->Password = 'hkdhiwjdimkqpahm';
         $mail->SMTPSecure = 'ssl';
 
-        $mail->setFrom('web.app.la.barberia@gmail.com');
+        $mail->setFrom('La Barbería');
         $mail->addAddress($this->email);
         $mail->Subject = 'Confirma tu cuenta';
 
@@ -60,7 +60,7 @@ class Email {
         $mail->Password = 'hkdhiwjdimkqpahm';
         $mail->SMTPSecure = 'ssl';
 
-        $mail->setFrom('web.app.la.barberia@gmail.com');
+        $mail->setFrom('La Barbería');
         $mail->addAddress($this->email);
         $mail->Subject = 'Reestablecer tu contraseña';
 
@@ -71,7 +71,7 @@ class Email {
         $content = "<html>";
         $content .= "<p><strong>Hola " . $this->name . "</strong> Se ha solicitado restablecer
         la contraseña. Da clic en el siguiente enlace para restablecerla</p>";
-        $content .= "<p>Presiona aquí: <a href='http://localhost:3000/recover_password?token=" . $this->token . "'>Restablecer la contraseña</a></p>";
+        $content .= "<p>Presiona aquí: <a href='http://" . $_SERVER["HTTP_HOST"] . "/recover_password?token=" . $this->token . "'>Restablecer la contraseña</a></p>";
         $content .= "<p>Si no solicitaste restablecer la contraseña puedes ignorar este correo.</p>";
         $content .= "<p>La barbería</p>";
         $content .= "</html>";
