@@ -4,7 +4,7 @@ const start_step = 1,
     final_step = 4,
     reservation = { id: "", name: "", date: "", time: "", services: [], products: [] };
 function startApp() {
-    showSection(), tabs(), pagerButtons(), prevPage(), nextPage(), /*getAPIServices(),*/ saveClientId(), saveClienName(), saveDate(), saveTime(), showSummary();
+    showSection(), tabs(), pagerButtons(), prevPage(), nextPage(), getAPIServices(), saveClientId(), saveClienName(), saveDate(), saveTime(), showSummary();
 }
 function showSection() {
     const e = document.querySelector(".show-section");
@@ -181,22 +181,28 @@ function showProducts(e) {
         });
 }
 function showServices(e) {
-    e.forEach((e) => {
-        const { id: t, name: n, price: c, description: o } = e,
-            s = document.createElement("P");
-        s.classList.add("service-name"), (s.textContent = n);
-        const a = document.createElement("P");
-        a.classList.add("service-price"), (a.textContent = "$" + c);
-        const r = document.createElement("DIV");
-        r.classList.add("service"),
-            (r.dataset.serviceId = t),
-            (r.onclick = function () {
-                selectService(e);
-            }),
-            r.appendChild(s),
-            r.appendChild(a),
-            document.querySelector("#services").appendChild(r);
-    });
+    const serviceDIV = document.querySelector(".service");
+    serviceDIV.onclick = function () {
+        selectService(serviceDIV.dataset.serviceId, serviceDIV.dataset.serviceName);
+    }
+
+
+    // e.forEach((e) => {
+    //     const { id: t, name: n, price: c, description: o } = e,
+    //         s = document.createElement("P");
+    //     s.classList.add("service-name"), (s.textContent = n);
+    //     const a = document.createElement("P");
+    //     a.classList.add("service-price"), (a.textContent = "$" + c);
+    //     const r = document.createElement("DIV");
+    //     r.classList.add("service"),
+    //         (r.dataset.serviceId = t),
+    //         (r.onclick = function () {
+    //             selectService(e);
+    //         }),
+    //         r.appendChild(s),
+    //         r.appendChild(a),
+    //         document.querySelector("#services").appendChild(r);
+    // });
 }
 function selectProduct(e) {
     const { id: t } = e,
@@ -204,11 +210,13 @@ function selectProduct(e) {
         c = document.querySelector(`[data-product-id="${t}"]`);
     n.some((e) => e.id === t) ? ((reservation.products = n.filter((e) => e.id !== t)), c.classList.remove("selected")) : ((reservation.products = [...n, e]), c.classList.add("selected"));
 }
-function selectService(e) {
+function selectService(serviceId, serviceName) {
     const { id: t } = e,
         { services: n } = reservation,
-        c = document.querySelector(`[data-service-id="${t}"]`);
-    n.some((e) => e.id === t) ? ((reservation.services = n.filter((e) => e.id !== t)), c.classList.remove("selected")) : ((reservation.services = [...n, e]), c.classList.add("selected"));
+
+    
+        c = document.querySelector(`[data-serviceId="${serviceId}"]`);
+    n.some(serviceId === t) ? ((reservation.services = n.filter(serviceId !== serviceId)), c.classList.remove("selected")) : ((reservation.services = [...n, serviceName]), c.classList.add("selected"));
 }
 function saveClientId() {
     reservation.id = document.querySelector("#id").value;
